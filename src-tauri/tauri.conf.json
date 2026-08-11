@@ -3,9 +3,11 @@
   "productName": "Radar",
   "version": "24.0.0",
   "identifier": "com.twagirumukiza.radar",
+
   "build": {
     "frontendDist": "../game"
   },
+
   "app": {
     "windows": [
       {
@@ -17,14 +19,30 @@
         "resizable": true
       }
     ],
+
     "security": {
       "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
     }
   },
+
   "bundle": {
     "active": true,
     "targets": "all",
+
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+
     "category": "Game",
+
+    "shortDescription": "Jeu de défense radar",
+
+    "longDescription": "Radar — jeu de défense avec modes Utilisateur, IA et IA + Utilisateur.",
+
     "copyright": "© 2026 Twagirumukiza — Tous droits réservés."
   }
 }
