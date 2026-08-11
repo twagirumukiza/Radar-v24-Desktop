@@ -1,1 +1,49 @@
+name: Build Radar Desktop
 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - windows-latest
+          - ubuntu-22.04
+          - macos-latest
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Récupérer Radar
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installer Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Dépendances Linux
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Installer Tauri
+        run: npm install
+
+      - name: Compiler Radar
+        run: npm run build
+
+      - name: Récupérer les installateurs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Radar-${{ matrix.platform }}
+          path: src-tauri/target/release/bundle/**
