@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Radar",
+  "version": "24.0.0",
+  "identifier": "com.twagirumukiza.radar",
+  "build": {
+    "frontendDist": "../game"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Radar",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Game",
+    "copyright": "© 2026 Twagirumukiza — Tous droits réservés."
+  }
+}
